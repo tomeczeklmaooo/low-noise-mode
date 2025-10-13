@@ -1,0 +1,8 @@
+/bin
+/build
+/out
+/.vscode
+*.json
+*.txt
+!README.txt
+!game_design.txt

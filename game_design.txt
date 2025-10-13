@@ -1,0 +1,34 @@
+Low Noise Mode - Game Design
+==============================
+- player dropped into a clearing in the middle of a forest with a small river nearby
+- player has to escape the place
+- start a small farm and expand it gradually
+- after a certain amount of time and experience gained, a mine is unlocked
+- gather wood to keep warm during nights
+- hunt animals to get clothes and additional food
+- anything player does is generating noise
+	- louder noise -> lingers for longer
+- generating too much noise attracts unfriendly creatures
+- creatures move closer to the base for a couple of minutes if any loud enough noise was made
+- build sound dampening walls around the base
+- keep noise below a certain level
+- player gets to choose the way to escape
+- player has to complete quests to get ready for an escape
+- player escapes one of 2 ways
+	- using the existing mine system, but it's dangerous as all nearby caves have been collapsing lately and it's loud and creatures are highly attracted to that area
+	- using the river, but on the day of the escape the weather has deteriorated and there is high risk (70%) of players' boat either crashing into a spiked tree or turning over and the player dies either way
+	- player is not notified of those risks, unless well they read this file
+- random noises coming from the forest impact players' ability to execute certain tasks for a while
+- generated noise dependent on surroundings, material hardness and force used
+	- noise = (material_hardness * force_used / surroundings_type) * 10
+		- surroundings_type (1..n): compact_area (1), forest (2), wide_corridor (3), small_clearing (4), large_clearing (5), open_field (6)
+		- material_hardness (1..n): dirt (10), wood (30), stone (50), metal (150)
+		- force_used (1..n): dependent on scared_state, sleep_state and strength_points (will have to come up with a calculation for it)
+- farming is quiet but slow
+- mining is loud but gives the player metal
+- hunting generally quiet but there is a risk of a sudden noise
+- river is quiet but unpredictable
+- deaths are permanent, time survived is stored in a file, along with a date and time when the game was started
+- UI with ncurses probably, split into 2 panes
+	- left one is text I/O
+	- right one is an ASCII rendering of the surrounding area and noise levels, above the rendered ASCII is a constant text telling the current noise level and time of day
