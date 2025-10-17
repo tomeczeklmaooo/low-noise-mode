@@ -32,3 +32,22 @@ Low Noise Mode - Game Design
 - UI with ncurses probably, split into 2 panes
 	- left one is text I/O
 	- right one is an ASCII rendering of the surrounding area and noise levels, above the rendered ASCII is a constant text telling the current noise level and time of day
+
+Game interface will look something like this (not to scale, obviously)
++--------------------------------+--------------------------------+
+| anim                           | noiselevel                     |
++--------------------------------+--------------------------------+
+|                                |                                |
+|                                |                                |
+|           textoutput           |            asciimap            |
+|                                |                                |
+|                                |                                |
+|                                |                                |
++--------------------------------+                                |
+| commandinput                   |                                |
++--------------------------------+--------------------------------+
+
+<anim> will display funky animated dots signaling noise level (colored accordingly with green, yellow and red sections)
+<noiselevel> will display current noise level (for example: 48 dB) and by how much it has last changed (for example: Last change: +2 dB)
+both <textoutput> and <commandinput> will emulate a terminal, <commandinput> has maximum length of 32 chars (including \0)
+<asciimap> will be a render of the surrounding area (25x25 grid most likely), with noise levels colored
