@@ -1,0 +1,59 @@
+This file defines code style guidelines for this repository.
+If the project does not accept contributions, treat this file as a reference to understand the codebase.
+
+1. General
+- Code must target the C23 standard, but compile without warnings on compilers that support C99 or later
+- All source files must use UTF-8 encoding, LF line endings, and feature a trailing newline
+- Each line of source code cannot exceed 100 characters in length
+- Use tabs for indentation, spaces for alignment only
+
+2. Naming
+- Function and variable definitions should use lower snake case (start_game(), exp_value)
+- Pointer (*) and reference (&) symbols belong next to the variable name, not the type
+- Constants and macros should use upper snake case (MAX_LINE_LENGTH)
+- Types such as structs and enums should use pascal case (GameConfig, PlayerState)
+- Filenames should use lower snake case (command_handler.c, item_store.h)
+
+3. Declarations and initialization of variables
+- Declare one variable per line, as it helps with debugging and readability
+- Do not initialize way ahead of time, do it as close to first use as possible
+- Use const instead of #define when possible
+- Avoid variables with global scope
+
+4. Functions
+- A function should perform a single task
+- Keep functions below 60 lines in length (excluding braces and comments)
+- Make use of early returns to avoid something
+- Always use modern prototypes with full parameter types
+- If there is something that can go wrong in a function, make it return an integer
+
+5. Includes and headers
+- All includes should appear at the very top of the source file
+- Includes should follow the order: standard headers, external library headers, project headers
+- Every header file must have include guards
+- Header files should expose only functions and data structures that might be required by other source files
+
+6. Error handling
+- Never ignore return values
+- Log errors to stderr, use fprintf(stderr, ...) for that
+- Exit with nonzero codes on fatal failures
+- Avoid using exit() in places where we do not want to end the whole program, return error codes instead
+
+7. Formatting
+- Opening and closing braces shall be on their own lines, nothing else other than comments can be on the same line
+- Use braces at all times, for single statements as well
+- A function declaration should have a leading blank line
+- Avoid putting too many blank lines
+
+8. Comments
+- Use // for short comments, /* ... */ for longer comments
+- Use comments to explain why your code does the task, what your code does should be visible from the code itself
+- Document public functions with their purpose, parameters and return values
+
+9. Build and tools
+- Use clang to compile
+- Use the included Makefile to make your life easier and for consistency
+- Compiler should not emit any warnings or errors
+
+10. Version control
+- Make sure commit messages tell what has been done in this particular commit, avoid doing "do stuff"
