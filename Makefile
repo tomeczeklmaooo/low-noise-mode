@@ -7,9 +7,10 @@ STRICT_FLAGS := -Wall -Wextra -Werror \
 	-Wold-style-definition -Wfloat-equal -Wundef -Wcast-align \
 	-Wbad-function-cast -Winline -Wmissing-declarations
 SANITIZE_FLAGS := # -fsanitize=address,integer,undefined
-LINK_FLAGS := -lpthread -ldl
+LINK_FLAGS := -lncurses
 DIAG_FLAGS := -ferror-limit=0 -fdiagnostics-color=always
-CC_FLAGS := $(STRICT_FLAGS) $(STD) $(SANITIZE_FLAGS) $(LINK_FLAGS) $(DIAG_FLAGS)
+CC_FLAGS := $(STRICT_FLAGS) $(STD) $(SANITIZE_FLAGS) $(DIAG_FLAGS)
+LD_FLAGS := $(STRICT_FLAGS) $(LINK_FLAGS)
 
 # PROJECT CONFIG
 SRC_DIR := src
@@ -27,7 +28,7 @@ all: $(TARGET)
 # BUILD TARGET
 $(TARGET): $(OBJ_FILES) | $(BIN_DIR)
 	@echo "[$(CC)] Linking $@"
-	$(CC) $(OBJ_FILES) -o $@ $(CC_FLAGS)
+	$(CC) $(OBJ_FILES) -o $@ $(LD_FLAGS)
 
 # COMPILE MAIN SOURCES
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
