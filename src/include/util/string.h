@@ -3,4 +3,4 @@
 
 void trim_whitespace(char *str);
 
-#endif /* SQLINT_STRING_H */
+#endif /* LNMG_STRING_H */
