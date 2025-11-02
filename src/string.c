@@ -21,3 +21,34 @@ void trim_whitespace(char *str)
 
 	*(end_ptr + 1) = '\0';
 }
+
+char **parse_string(char *str, const char *delim, size_t *tokens_count)
+{
+	char *in_str = str;
+	char **parsed_str = NULL;
+	char *token = strtok(in_str, delim);
+	size_t token_amt = 0;
+	size_t n_spaces = 0;
+
+	while (token)
+	{
+		parsed_str = realloc(parsed_str, sizeof(char*) * ++n_spaces);
+
+		if (parsed_str == NULL)
+		{
+			exit(-1);
+		}
+
+		parsed_str[n_spaces - 1] = token;
+		token_amt++;
+
+		token = strtok(NULL, delim);
+	}
+
+	parsed_str = realloc(parsed_str, sizeof(char*) * (n_spaces + 1));
+	parsed_str[n_spaces] = 0;
+
+	*tokens_count = token_amt;
+
+	return parsed_str;
+}
