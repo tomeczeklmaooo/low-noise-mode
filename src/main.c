@@ -59,13 +59,20 @@ int main(int argc, char **argv)
 				size_t tokens_count = 0;
 				char **parsed_command = parse_string(command_input, " ", &tokens_count);
 				// PLAYER GENERAL COMMANDS
+				if (strcmp(command_input, "/inv") == 0)
+				{
+					// show what the player has in the inventory
+				}
+				if (strcmp(command_input, "/stats") == 0)
+				{
+					// show all player and savegame stats
+				}
+				// PLAYER ACTION COMMANDS
 				if (strcmp(command_input, "/move") == 0)
 				{
 					// params: location, type
 					player_move(parsed_command[1], parsed_command[2]);
 				}
-				// PLAYER ACTION COMMANDS
-
 				// MISC COMMANDS
 				if (strcmp(command_input, "/commands") == 0)
 				{
