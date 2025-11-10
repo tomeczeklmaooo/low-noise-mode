@@ -45,24 +45,66 @@ i32 main(i32 argc, char **argv)
 		printf(">> ");
 		if (fgets(command_input, sizeof(command_input), stdin) == NULL)
 		{
-			log_fatal("Failed to read user input from stdin");
-			exit(1);
+			fprintf(stderr, "Failed to read input from stdin");
 		}
 
-		log_debug("From stdin: %s", command_input);
 		trim_whitespace(command_input);
 
 		switch (command_input[0])
 		{
 			case '/':
 			{
-				log_debug("Received command");
 				u64 tokens_count = 0;
 				char **parsed_command = parse_string(command_input, " ", &tokens_count);
 				// PLAYER GENERAL COMMANDS
 				if (strcmp(command_input, "/inv") == 0)
 				{
 					// show what the player has in the inventory
+					
+					// placeholder data
+					struct inventory_t player_inv = {
+						0, 1, 2, 3, 4, 5, 6,
+						{ 0, "Wood pickaxe", 2, 50 },
+						{ 1, "Iron axe", 30, 100 },
+						{ 2, "Kitchen knife", 10, 255 },
+						{ 3, "Bow", 15, 200 }
+					};
+
+					printf("Wood: %d\n", player_inv.res_wood);
+					printf("Stone: %d\n", player_inv.res_stone);
+					printf("Wool: %d\n", player_inv.res_wool);
+					printf("Leather: %d\n", player_inv.res_leather);
+					printf("Feather: %d\n", player_inv.res_feather);
+					printf("Wheat: %d\n", player_inv.res_wheat);
+					printf("Iron: %d\n", player_inv.res_iron);
+					printf(
+						"Pickaxe:\n  * type: %d\n  * name: %s\n  * damage: %d\n  * durability: %d\n",
+						player_inv.tool_pickaxe.type,
+						player_inv.tool_pickaxe.name,
+						player_inv.tool_pickaxe.damage,
+						player_inv.tool_pickaxe.durability
+					);
+					printf(
+						"Axe:\n  * type: %d\n  * name: %s\n  * damage: %d\n  * durability: %d\n",
+						player_inv.tool_axe.type,
+						player_inv.tool_axe.name,
+						player_inv.tool_axe.damage,
+						player_inv.tool_axe.durability
+					);
+					printf(
+						"Knife:\n  * type: %d\n  * name: %s\n  * damage: %d\n  * durability: %d\n",
+						player_inv.tool_knife.type,
+						player_inv.tool_knife.name,
+						player_inv.tool_knife.damage,
+						player_inv.tool_knife.durability
+					);
+					printf(
+						"Bow:\n  * type: %d\n  * name: %s\n  * damage: %d\n  * durability: %d\n",
+						player_inv.tool_bow.type,
+						player_inv.tool_bow.name,
+						player_inv.tool_bow.damage,
+						player_inv.tool_bow.durability
+					);
 				}
 				if (strcmp(command_input, "/stats") == 0)
 				{
@@ -94,8 +136,7 @@ i32 main(i32 argc, char **argv)
 				break;
 			}
 
-			default:
-				log_debug("Received normal text");
+			default: // do nothing
 				break;
 		}
 	}

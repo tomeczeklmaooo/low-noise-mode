@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -37,7 +38,8 @@ char **parse_string(char *str, const char *delim, u64 *tokens_count)
 
 		if (parsed_str == NULL)
 		{
-			exit(-1);
+			fprintf(stderr, "Failed to allocate memory for the parsed string\n");
+			return NULL;
 		}
 
 		parsed_str[n_spaces - 1] = token;
