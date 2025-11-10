@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "include/miscellaneous_functions.h"
+#include "miscellaneous_functions.h"
 
 void print_commands()
 {

@@ -5,12 +5,13 @@
 
 #include <curses.h>
 
-#include "include/util/string.h"
-#include "include/util/log.h"
-#include "include/miscellaneous_functions.h"
-#include "include/player.h"
+#include "util/string.h"
+#include "util/log.h"
+#include "util/types.h"
+#include "util/miscellaneous_functions.h"
+#include "game/player.h"
 
-int main(int argc, char **argv)
+i32 main(i32 argc, char **argv)
 {
 	if (argc == 2 && strcmp(argv[1], "--ncurses") == 0)
 	{
@@ -56,7 +57,7 @@ int main(int argc, char **argv)
 			case '/':
 			{
 				log_debug("Received command");
-				size_t tokens_count = 0;
+				u64 tokens_count = 0;
 				char **parsed_command = parse_string(command_input, " ", &tokens_count);
 				// PLAYER GENERAL COMMANDS
 				if (strcmp(command_input, "/inv") == 0)

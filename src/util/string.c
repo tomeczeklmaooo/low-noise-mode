@@ -2,13 +2,14 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "include/util/string.h"
+#include "string.h"
+#include "types.h"
 
 void trim_whitespace(char *str)
 {
 	char *end_ptr = NULL;
 
-	while (isspace((unsigned char)*str)) str++;
+	while (isspace((u8)*str)) str++;
 
 	if (*str == 0)
 	{
@@ -17,18 +18,18 @@ void trim_whitespace(char *str)
 	}
 
 	end_ptr = str + strlen(str) - 1;
-	while (end_ptr > str && isspace((unsigned char)*end_ptr)) end_ptr--;
+	while (end_ptr > str && isspace((u8)*end_ptr)) end_ptr--;
 
 	*(end_ptr + 1) = '\0';
 }
 
-char **parse_string(char *str, const char *delim, size_t *tokens_count)
+char **parse_string(char *str, const char *delim, u64 *tokens_count)
 {
 	char *in_str = str;
 	char **parsed_str = NULL;
 	char *token = strtok(in_str, delim);
-	size_t token_amt = 0;
-	size_t n_spaces = 0;
+	u64 token_amt = 0;
+	u64 n_spaces = 0;
 
 	while (token)
 	{

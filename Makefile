@@ -33,6 +33,7 @@ $(TARGET): $(OBJ_FILES) | $(BIN_DIR)
 # COMPILE MAIN SOURCES
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@echo "[$(CC)] Compiling $<"
+	mkdir -p $(dir $@)
 	$(CC) -c $< -o $@ $(CC_FLAGS)
 
 # CREATE DIRECTORIES

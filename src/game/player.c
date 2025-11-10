@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "include/player.h"
-#include "include/util/string.h"
+#include "player.h"
+#include "../util/string.h"
 
 void player_move(const char *location, const char *type)
 {

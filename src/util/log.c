@@ -23,17 +23,19 @@
  * The code formatting in this file was changed to match the rest of the project
  */
 
-#include "include/util/log.h"
+#include "log.h"
 
 #define MAX_CALLBACKS 32
 
-typedef struct {
+typedef struct
+{
 	log_LogFn fn;
 	void *udata;
 	int level;
 } Callback;
 
-static struct {
+static struct
+{
 	void *udata;
 	log_LockFn lock;
 	int level;
