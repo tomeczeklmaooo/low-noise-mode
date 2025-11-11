@@ -17,4 +17,8 @@ typedef int64_t  i64;
 typedef float    f32;
 typedef double   f64;
 
+typedef void (*callback_void_t)(void);
+typedef i32 (*callback_i32_t)(void);
+typedef f32 (*callback_f32_t)(void);
+
 #endif /* TYPES_H */

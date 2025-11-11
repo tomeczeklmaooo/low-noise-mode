@@ -28,23 +28,24 @@ all: $(TARGET)
 # BUILD TARGET
 $(TARGET): $(OBJ_FILES) | $(BIN_DIR)
 	@echo "[$(CC)] Linking $@"
-	$(CC) $(OBJ_FILES) -o $@ $(LD_FLAGS)
+	@$(CC) $(OBJ_FILES) -o $@ $(LD_FLAGS)
 
 # COMPILE MAIN SOURCES
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@echo "[$(CC)] Compiling $<"
-	mkdir -p $(dir $@)
-	$(CC) -c $< -o $@ $(CC_FLAGS)
+	@mkdir -p $(dir $@)
+	@$(CC) -c $< -o $@ $(CC_FLAGS)
 
 # CREATE DIRECTORIES
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
 
 $(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+	@mkdir -p $(BIN_DIR)
 
 # CLEAN TARGET
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+	@echo "Cleaning $(BUILD_DIR) and $(BIN_DIR)"
+	@rm -rf $(BUILD_DIR) $(BIN_DIR)
 
 .PHONY: all clean

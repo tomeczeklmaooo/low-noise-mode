@@ -10,6 +10,7 @@
 #include "util/types.h"
 #include "util/miscellaneous_functions.h"
 #include "game/player.h"
+#include "game/commands.h"
 
 i32 main(i32 argc, char **argv)
 {

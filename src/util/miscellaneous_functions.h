@@ -1,6 +1,7 @@
 #ifndef MISCELLANEOUS_FUNCTIONS_H
 #define MISCELLANEOUS_FUNCTIONS_H
 
+void print_title(const char *title);
 void print_commands();
 void print_about();
 

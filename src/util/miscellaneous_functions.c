@@ -1,19 +1,47 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "miscellaneous_functions.h"
+#include "types.h"
+#include "../game/commands.h"
+
+void print_title(const char *title)
+{
+	printf("\x1B[1m%s\x1B[0m\n\n", title);
+}
 
 void print_commands()
 {
-	printf("\x1B[1mList of commands\x1B[0m\n\n");
+	print_title("List of commands");
 
-	printf("/commands -> displays this list of commands\n");
-	printf("/about    -> displays a short text about this game\n");
-	printf("/exit     -> exits the game\n");
+	u64 command_count = sizeof(command_list) / sizeof(command_list[0]);
+	u64 max_length = 0;
+
+	for (u64 i = 0; i < command_count; i++)
+	{
+		u64 length = strlen(command_list[i].command);
+		if (length > max_length)
+		{
+			max_length = length;
+		}
+	}
+
+	for (u64 i = 0; i < command_count; i++)
+	{
+		printf(
+			"%-*s  : %s (%s)\n",
+			(i32)max_length,
+			command_list[i].command,
+			command_list[i].description,
+			command_list[i].accepts_params == true ? "takes parameters" : "no parameters"
+		);
+	}
 }
 
 void print_about()
 {
-	printf("\x1B[1mAbout\x1B[0m\n\n");
+	print_title("About");
+	
 	printf("This game is a project of mine that I intend to develop during long autumn and winter evenings.\n");
 	printf("It takes a bit of inspiration from the minimalist text adventure \"A Dark Room\" (it's amazing),\n");
 	printf("but here I decided on command navigation (which is an inspiration in and of itself from a little\n");
