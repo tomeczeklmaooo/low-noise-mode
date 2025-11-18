@@ -16,6 +16,7 @@ struct command_t
 	callback_i32_t callback;
 };
 
+extern u64 command_count;
 extern struct command_t command_list[6];
 
 #endif /* COMMANDS_H */

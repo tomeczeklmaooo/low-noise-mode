@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <stdbool.h>
+
 #include "../util/types.h"
 #include "tools.h"
 
@@ -34,6 +36,9 @@ struct player_stats_t
 	bool is_scared;
 };
 
-void player_move(const char *location, const char *type);
+i32 player_move(/* const char *location, const char *type */); // params commented out until I figure out callbacks with variable params
+i32 player_show_inventory(void);
+i32 player_show_stats(void);
+
 
 #endif /* PLAYER_H */
