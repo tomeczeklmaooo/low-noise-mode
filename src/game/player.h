@@ -36,9 +36,14 @@ struct player_stats_t
 	bool is_scared;
 };
 
-i32 player_move(/* const char *location, const char *type */); // params commented out until I figure out callbacks with variable params
-i32 player_show_inventory(void);
-i32 player_show_stats(void);
+i32 player_move(const char *location, const char *type);
+i32 cmd_player_move(u64 argc, char **argv);
+
+i32 show_inventory();
+i32 cmd_show_inventory(u64 argc, char **argv);
+
+i32 show_stats();
+i32 cmd_show_stats(u64 argc, char **argv);
 
 
 #endif /* PLAYER_H */

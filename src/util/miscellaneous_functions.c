@@ -11,6 +11,7 @@ void print_title(const char *title)
 	printf("\x1B[1m%s\x1B[0m\n\n", title);
 }
 
+// === PRINT COMMANDS COMMAND
 i32 print_commands()
 {
 	print_title("List of commands");
@@ -40,6 +41,14 @@ i32 print_commands()
 	return 0;
 }
 
+i32 cmd_print_commands(u64 argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return print_commands();
+}
+
+// === PRINT ABOUT COMMAND
 i32 print_about()
 {
 	print_title("About");
@@ -55,8 +64,23 @@ i32 print_about()
 	return 0;
 }
 
+i32 cmd_print_about(u64 argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return print_about();
+}
+
+// === EXIT GAME COMMAND
 i32 exit_game()
 {
 	printf("Bye bye!\n");
 	exit(0);
+}
+
+i32 cmd_exit_game(u64 argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return exit_game();
 }

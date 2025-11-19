@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <stdarg.h>
 
 #include "player.h"
 #include "../util/string.h"
 
-i32 player_move(/* const char *location, const char *type */)
+// === PLAYER MOVE COMMAND
+i32 player_move(const char *location, const char *type)
 {
-	printf("MOVE\n");
+	printf("MOVE: %s (%s)\n", location, type);
 
 	// if type == fast   -> travel_time   = (base_travel_time + location_travel_time_offset) * 0.5
 	//                   -> player_energy = energy_before_travel - (travel_time * energy_depletion_rate_fast)
@@ -22,16 +22,43 @@ i32 player_move(/* const char *location, const char *type */)
 	return 0;
 }
 
-i32 player_show_inventory(void)
+i32 cmd_player_move(u64 argc, char **argv)
+{
+	if (argc < 3)
+	{
+		fprintf(stderr, "/move command is missing %s\n", argc == 1 ? "2 arguments: location, type" : "1 argument: type");
+		return -1;
+	}
+
+	return player_move(argv[1], argv[2]);
+}
+
+// === SHOW INVENTORY COMMAND
+i32 show_inventory()
 {
 	printf("INVENTORY\n");
 
 	return 0;
 }
 
-i32 player_show_stats(void)
+i32 cmd_show_inventory(u64 argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return show_inventory();
+}
+
+// === SHOW STATS COMMAND
+i32 show_stats()
 {
 	printf("STATS\n");
 
 	return 0;
+}
+
+i32 cmd_show_stats(u64 argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+	return show_stats();
 }

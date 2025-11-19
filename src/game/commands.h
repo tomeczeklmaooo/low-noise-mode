@@ -13,7 +13,7 @@ struct command_t
 	char description[64];
 	// if false only the command is valid, e.g. "/inv" will be accepted but "/inv some params" will not
 	bool accepts_params;
-	callback_i32_t callback;
+	callback_cmd_t function;
 };
 
 extern u64 command_count;

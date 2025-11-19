@@ -20,5 +20,6 @@ typedef double   f64;
 typedef void (*callback_void_t)(void);
 typedef i32 (*callback_i32_t)(void);
 typedef f32 (*callback_f32_t)(void);
+typedef i32 (*callback_cmd_t)(u64 argc, char **argv);
 
 #endif /* TYPES_H */
